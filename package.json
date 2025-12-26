@@ -2,9 +2,6 @@
   "name": "car-wash-website",
   "version": "1.0.0",
   "description": "Студия-детейлинг SOVA",
-  "scripts": {
-    "start": "npx http-server frontend -p 8080 -o"
-  },
   "devDependencies": {
     "http-server": "^14.1.1"
   }
