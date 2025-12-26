@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Галерея работ - Студия-детейлинг SOVA</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 10px 25px;
+            border: 2px solid #CD7F32;
+            background: white;
+            color: #CD7F32;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #CD7F32;
+            color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            z-index: 0;
+        }
+
+        .gallery-item-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+            z-index: 2;
+        }
+
+        .gallery-item:hover .gallery-item-info {
+            transform: translateY(0);
+        }
+
+        .gallery-item-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .gallery-item-info p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .gallery-stats {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin-top: 60px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .gallery-stats h3 {
+            color: #1a1a1a;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #CD7F32;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #666666;
+            font-size: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="../index.html">SOVA</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Главная</a></li>
+                    <li><a href="services.html">Услуги</a></li>
+                    <li><a href="gallery.html" class="active">Галерея</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Галерея наших работ</h1>
+        <p>Примеры выполненных работ, которыми мы гордимся</p>
+    </div>
+
+    <div class="gallery-container">
+        <div class="gallery-filters">
+            <button class="filter-btn active" data-filter="all">Все работы</button>
+            <button class="filter-btn" data-filter="wash">Мойка</button>
+            <button class="filter-btn" data-filter="polish">Полировка</button>
+            <button class="filter-btn" data-filter="interior">Химчистка</button>
+            <button class="filter-btn" data-filter="premium">Премиум</button>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item" data-category="wash">
+                <div class="gallery-item-info">
+                    <h3>Экспресс мойка</h3>
+                    <p>Быстрая и качественная мойка</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="wash">
+                <div class="gallery-item-info">
+                    <h3>Полная мойка</h3>
+                    <p>Комплексная обработка автомобиля</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="polish">
+                <div class="gallery-item-info">
+                    <h3>Полировка кузова</h3>
+                    <p>Восстановление блеска</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="interior">
+                <div class="gallery-item-info">
+                    <h3>Химчистка салона</h3>
+                    <p>Глубокая чистка</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="premium">
+                <div class="gallery-item-info">
+                    <h3>Премиум пакет</h3>
+                    <p>Комплексный уход</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="wash">
+                <div class="gallery-item-info">
+                    <h3>Мойка внедорожника</h3>
+                    <p>Специальная обработка</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="polish">
+                <div class="gallery-item-info">
+                    <h3>Защитное покрытие</h3>
+                    <p>Долговременная защита</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="interior">
+                <div class="gallery-item-info">
+                    <h3>Чистка панели</h3>
+                    <p>Детальная обработка</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="premium">
+                <div class="gallery-item-info">
+                    <h3>VIP обслуживание</h3>
+                    <p>Премиум сервис</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="wash">
+                <div class="gallery-item-info">
+                    <h3>Мойка двигателя</h3>
+                    <p>Профессиональная очистка</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="polish">
+                <div class="gallery-item-info">
+                    <h3>Удаление царапин</h3>
+                    <p>Восстановление покрытия</p>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="interior">
+                <div class="gallery-item-info">
+                    <h3>Чистка ковриков</h3>
+                    <p>Глубокая обработка</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-stats">
+            <h3>Статистика наших работ</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Выполненных работ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">650+</div>
+                    <div class="stat-label">Довольных клиентов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Положительных отзывов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5+</div>
+                    <div class="stat-label">Лет опыта</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Студия-детейлинг SOVA</h3>
+                    <p>Профессиональный уход за вашим автомобилем</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="../index.html">Главная</a></li>
+                        <li><a href="services.html">Услуги</a></li>
+                        <li><a href="gallery.html">Галерея</a></li>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p>+7 (981) 275-00-10</p>
+                    <p>Санкт-Петербург, Кузнецовская, 52к13</p>
+                    <p>Пн-Вс: 09:00 - 21:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Студия-детейлинг SOVA. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Фильтрация галереи
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Убираем активный класс со всех кнопок
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Добавляем активный класс к нажатой кнопке
+                    this.classList.add('active');
+
+                    const filter = this.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'scale(1)';
+                            }, 10);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'scale(0.8)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+

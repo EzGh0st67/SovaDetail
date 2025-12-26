@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги и цены - Студия-детейлинг SOVA</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #2d2d2d 0%, #CD7F32 100%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+        }
+
+        .service-card .description {
+            color: #666666;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        .service-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 10px;
+        }
+
+        .service-price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #CD7F32;
+        }
+
+        .service-duration {
+            color: #666666;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .service-features {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            color: #CD7F32;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .price-note {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            color: #666666;
+        }
+
+        .price-note strong {
+            color: #1a1a1a;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <div class="logo">
+                    <a href="../index.html">SOVA</a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../index.html">Главная</a></li>
+                    <li><a href="services.html" class="active">Услуги</a></li>
+                    <li><a href="gallery.html">Галерея</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Наши услуги и цены</h1>
+        <p>Широкий спектр услуг для вашего автомобиля по доступным ценам</p>
+    </div>
+
+    <div class="services-container">
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Экспресс мойка</h3>
+                <p class="description">Быстрая наружная мойка автомобиля с использованием профессиональных средств</p>
+                <div class="service-details">
+                    <div class="service-price">600 ₽</div>
+                    <div class="service-duration">20 мин</div>
+                </div>
+                <ul class="service-features">
+                    <li>Мойка кузова</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>Стандартная мойка</h3>
+                <p class="description">Комплексная мойка кузова и салона с использованием премиум средств</p>
+                <div class="service-details">
+                    <div class="service-price">1500 ₽</div>
+                    <div class="service-duration">60 мин</div>
+                </div>
+                <ul class="service-features">
+                    <li>Мойка кузова</li>
+                    <li>Чистка салона</li>
+                    <li>Пылесос</li>
+                    <li>Сушка</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>Химчистка салона</h3>
+                <p class="description">Глубокая чистка салона автомобиля с использованием профессиональных средств</p>
+                <div class="service-details">
+                    <div class="service-price">3000 ₽</div>
+                    <div class="service-duration">120 мин</div>
+                </div>
+                <ul class="service-features">
+                    <li>Чистка сидений</li>
+                    <li>Чистка ковриков</li>
+                    <li>Обработка панели</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>Полировка кузова</h3>
+                <p class="description">Восстановление лакокрасочного покрытия и защита от внешних воздействий</p>
+                <div class="service-details">
+                    <div class="service-price">10000 ₽</div>
+                    <div class="service-duration">180 мин</div>
+                </div>
+                <ul class="service-features">
+                    <li>Полировка кузова</li>
+                    <li>Удаление царапин</li>
+                    <li>Гарантия 6 месяцев</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>Мойка двигателя</h3>
+                <p class="description">Очистка двигателя от загрязнений и масляных пятен</p>
+                <div class="service-details">
+                    <div class="service-price">800 ₽</div>
+                    <div class="service-duration">40 мин</div>
+                </div>
+                <ul class="service-features">
+                    <li>Очистка двигателя</li>
+                    <li>Обработка защитными средствами</li>
+                    <li>Сушка</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>Чернение резины</h3>
+                <p class="description">Восстановление цвета резины и защита от старения</p>
+                <div class="service-details">
+                    <div class="service-price">400 ₽</div>
+                    <div class="service-duration">15 мин</div>
+                </div>
+                <ul class="service-features">
+                    <li>Очистка резины</li>
+                    <li>Нанесение защитного состава</li>
+                    <li>Полировка</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <h3>Мойка внедорожника</h3>
+                <p class="description">Специальная услуга для внедорожников и больших автомобилей</p>
+                <div class="service-details">
+                    <div class="service-price">2000 ₽</div>
+                    <div class="service-duration">90 мин</div>
+                </div>
+                <ul class="service-features">
+                    <li>Полная мойка</li>
+                    <li>Мойка багажника</li>
+                    <li>Сушка</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="price-note">
+            <p><strong>Примечание:</strong> Цены указаны для легковых автомобилей. Для внедорожников и микроавтобусов стоимость может быть выше. Точную цену уточняйте у наших менеджеров.</p>
+            <p style="margin-top: 10px;">Принимаем оплату наличными и банковскими картами</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Студия-детейлинг SOVA</h3>
+                    <p>Профессиональный уход за вашим автомобилем</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Навигация</h4>
+                    <ul>
+                        <li><a href="../index.html">Главная</a></li>
+                        <li><a href="services.html">Услуги</a></li>
+                        <li><a href="gallery.html">Галерея</a></li>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p>+7 (981) 275-00-10</p>
+                    <p>Санкт-Петербург, Кузнецовская, 52к13</p>
+                    <p>Пн-Вс: 09:00 - 21:00</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Студия-детейлинг SOVA. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
