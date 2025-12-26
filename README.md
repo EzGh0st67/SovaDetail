@@ -47,3 +47,5 @@ frontend/
 ## Лицензия
 
 © 2025 Студия-детейлинг SOVA
+Notion - https://www.notion.so/SOVA-2cdf8c5031fe803fa428d5416a727bc7?source=copy_link
+
